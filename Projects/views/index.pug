@@ -1,8 +1,25 @@
 //- this is the start of a pug file. it has an html document beginning, defines the head of the document, and gives it a title. it then defines the body of the element, and then gives it an h1 element, defining a message inside of it as well.
 html
     head
-        title= title
+        link(rel="stylesheet", href="/static/style.css")
+        title Hey Bud!
     body
-        h1= message
-        h3= greeting
-        p= data.basics.name
+    nav
+        ul
+            li
+                a(href="/") Home Page
+            li
+                a(href="/contact") Contact me!
+            li
+                a(href="/github") My Github page
+            li
+                a(href="/experience") My past works!
+            li
+                a(href="/interests") A few personal interests.
+
+        h1 Hello there!
+        h3 This is my pretty sweet website, developed and made by using both Express. I hope you enjoy it!
+        p (Oh, and it was also made by pug!)
+        img(src='https://www.prestigeanimalhospital.com/sites/default/files/styles/large/adaptive-image/public/pug-dog-breed-info.jpg?itok=3zc-opZZ')
+        p Oops! Not that pug! This one!
+        img(src='https://icon-library.net/images/pug-icon/pug-icon-5.jpg')

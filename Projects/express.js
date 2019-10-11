@@ -1,11 +1,12 @@
-// imports the express package into the document, requiring the express module.
+// imports the packages into the document, requiring their respective module.
 const express = require('express');
 const path = require('path'); 
+const fetch = require('node-fetch');
 
 // app runs the express module, allowing it to be used elsewhere in the document without the need to write the function more than once, defining it to a quick variable.
 var app = express();
 // this defines our port; this is where on the localhost that our content will be found.
-const port = 8001;
+const port = 8002;
 
 // info is some basic data that we can use to be called in the pug files. we can pass it through an app.get...res.render to render it in the specific files that we want to call our data through.
 var info = {
@@ -15,7 +16,7 @@ var info = {
       "picture": "https://media.licdn.com/dms/image/C5603AQFkrRtTgr7bEA/profile-displayphoto-shrink_200_200/0?e=1576108800&v=beta&t=7LbkBfU88lJYg0fEEzORQwUzkJtsCD93Jwi6KtxMHMo",
       "email": "cgregorio026@west-mec.org",
       "phone": "(602) 509-1898",
-      "summary": "A summary of John Doe...",
+      "summary": "I like to code. I like to draw. I like to paint. Need I say more? Arizona born, I grew up speaking two languages at home.",
       "location": {
         "address": "4417 Fauntleroy Way SW",
         "postalCode": "WA 98126",
@@ -84,10 +85,14 @@ var info = {
       "fluency2": "Native speaker",
     }],
     "interests": [{
-      "name": "Wildlife",
+      "name": "Hobbies",
       "keywords": [
-        "Ferrets",
-        "Unicorns"
+        "Drawing",
+        "Coding",
+        "Math",
+        "Swimming",
+        "Hiking",
+        "Cooking"
       ]
     }],
     "references": [{
@@ -95,6 +100,15 @@ var info = {
       "reference": "Reference..."
     }]
   };
+
+  // this reads the routes file for the api file.
+module.exports = (app) => {
+  fs.readdirSync('routes/api/').forEach((file) => {
+    require(`./api/${file.substr(0, file.indexOf('.'))}`)(app);
+  })
+}
+
+
 
 // uses express to set pug as the view engine, or the template engine.
 app.set("view engine", "pug");
@@ -107,13 +121,44 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.get('/', (req, res) => {
     res.render('index', 
     { 
-        title: 'Hey Bud',
-        message: 'Hello there!',
-        greeting: 'This is my pretty sweet website, developed and made by using Express',
-        data: info
+      data: info
     });
   });
 
+app.get('/contact', (req, res) => {
+    res.render('contact', 
+    { 
+      data: info
+    });
+  });
+
+app.get('/github', (req, res) => {  
+//because fetch has been defined above as node-fetch, we can just say fetch, instead of node-fetch.
+var stuff = fetch('https://api.github.com/users/cgregorio026')
+.then(res => res.json())
+.then(
+  (json) => {
+    console.log(json)
+  res.render('github', { 
+      data: info,
+      github: stuff
+    })
+  })
+});
+  
+app.get('/experience', (req, res) => {
+      res.render('experience', 
+      { 
+        data: info
+      });
+    });
+
+app.get('/interests', (req, res) => {
+      res.render('interests', 
+      { 
+        data: info
+      });
+    });
 // when running nodemon, this will tell us that the info will be displayed on the port defined. to run this using nodemon, we would want to be in the projects directory, and use nodemon express.js, which will display this message, and then display the rest of our information in the pug file.
 const server = app.listen(port, () => {
     console.log(`something is here -> ${server.address().port}`);
