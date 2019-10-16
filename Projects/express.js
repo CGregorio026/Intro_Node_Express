@@ -2,9 +2,11 @@
 const express = require('express');
 const path = require('path'); 
 const fetch = require('node-fetch');
+// defines the URL in which we will collect our data from. In this case, it is my github account.
+const URL = "https://api.github.com/users/cgregorio026";
 
 // app runs the express module, allowing it to be used elsewhere in the document without the need to write the function more than once, defining it to a quick variable.
-var app = express();
+const app = express();
 // this defines our port; this is where on the localhost that our content will be found.
 const port = 8002;
 
@@ -108,8 +110,6 @@ module.exports = (app) => {
   })
 }
 
-
-
 // uses express to set pug as the view engine, or the template engine.
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -134,14 +134,14 @@ app.get('/contact', (req, res) => {
 
 app.get('/github', (req, res) => {  
 //because fetch has been defined above as node-fetch, we can just say fetch, instead of node-fetch.
-var stuff = fetch('https://api.github.com/users/cgregorio026')
+const stuff = fetch('https://api.github.com/users/cgregorio026')
 .then(res => res.json())
 .then(
   (json) => {
     console.log(json)
   res.render('github', { 
       data: info,
-      github: stuff
+      github: json
     })
   })
 });
