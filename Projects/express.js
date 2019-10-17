@@ -2,13 +2,11 @@
 const express = require('express');
 const path = require('path'); 
 const fetch = require('node-fetch');
-// defines the URL in which we will collect our data from. In this case, it is my github account.
-const URL = "https://api.github.com/users/cgregorio026";
 
 // app runs the express module, allowing it to be used elsewhere in the document without the need to write the function more than once, defining it to a quick variable.
 const app = express();
 // this defines our port; this is where on the localhost that our content will be found.
-const port = 8002;
+const port = 8005;
 
 // info is some basic data that we can use to be called in the pug files. we can pass it through an app.get...res.render to render it in the specific files that we want to call our data through.
 var info = {
@@ -80,12 +78,12 @@ var info = {
         "Javascript"
       ]
     }],
-    "languages": [{
+    "languages": {
       "language1": "English",
       "fluency1": "Native speaker",
       "language2": "Spanish",
       "fluency2": "Native speaker",
-    }],
+    },
     "interests": [{
       "name": "Hobbies",
       "keywords": [
@@ -103,7 +101,7 @@ var info = {
     }]
   };
 
-  // this reads the routes file for the api file.
+// this reads the routes file for the api file.
 module.exports = (app) => {
   fs.readdirSync('routes/api/').forEach((file) => {
     require(`./api/${file.substr(0, file.indexOf('.'))}`)(app);
@@ -134,7 +132,7 @@ app.get('/contact', (req, res) => {
 
 app.get('/github', (req, res) => {  
 //because fetch has been defined above as node-fetch, we can just say fetch, instead of node-fetch.
-const stuff = fetch('https://api.github.com/users/cgregorio026')
+fetch('https://api.github.com/users/cgregorio026')
 .then(res => res.json())
 .then(
   (json) => {

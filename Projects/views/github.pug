@@ -3,18 +3,24 @@ html
         link(rel="stylesheet", href="/static/style.css")
         title My Github page!
     body
-    nav
-        ul
-            li
-                a(href="/") Home Page
-            li
-                a(href="/contact") Contact me!
-            li
-                a(href="/github") My Github page
-            li
-                a(href="/experience") Experience
-            li
-                a(href="/interests") A few personal interests.
+        nav.navbar
+            ul
+                li
+                    a(href="/") Home Page
+                li
+                    a(href="/contact") Contact me!
+                li
+                    a(href="/github") My Github page
+                li
+                    a(href="/experience") Works
+                li
+                    a(href="/interests") About me!
 
-    p= `My account name is ${github.login}`
-    p= `You can find my account at ${github.url} `
+    .info
+        img(src=`${github.avatar_url}`)
+        p= `My account name is ${github.login}`
+        p You can find my account at
+            a(href=`${github.html_url}`)  https://github.com/CGregorio026
+        p= `I currently have ${github.followers} followers! Nice!`
+        p= `I also currently follow ${github.following} people.`
+        p= `As of now, I have made ${github.public_repos} repositories.`

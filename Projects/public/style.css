@@ -1,14 +1,47 @@
-html{
-    background: #007991;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+body{
+    margin: 0;
+    padding: 0;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-sizing: border-box;
 }
 
-body{
-    width: 90%;
-    margin: 0 auto;
-    background: #007991;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+nav.navbar{
+    width: 100%;
+    text-align: center;
+}
+
+nav.navbar li{
+    width: 20%;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    float: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #24292e;
+    box-sizing: border-box;
+}
+
+nav.navbar li a:link,
+nav.navbar li a:visited{
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav.navbar li a:hover,
+nav.navbar li a:active{
+    padding: 0;
+    margin: 0;
+    color: #ffffffb3;
+    text-decoration: none;
+}
+
+nav.navbar::after{
+    clear: both;
+    display: table;
+    content: "";
 }

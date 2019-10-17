@@ -3,7 +3,7 @@ html
         link(rel="stylesheet", href="/static/style.css")
         title Contact Me!
     body
-    nav
+    nav.navbar
         ul
             li
                 a(href="/") Home Page
@@ -12,11 +12,13 @@ html
             li
                 a(href="/github") My Github page
             li
-                a(href="/experience") Experience
+                a(href="/experience") Works
             li
-                a(href="/interests") A few personal interests.
-    h1= `${data.basics.name}, (${data.basics.label})`
-    img(src=`${data.basics.picture}`)
-    p It me!
-    h4= `You can contact me at ${data.basics.email}!`
-    h5= `Prefer to call me instead? My phone number is ${data.basics.phone}`
+                a(href="/interests") About me!
+
+    .info
+        h1= `${data.basics.name}, (${data.basics.label})`
+        img(src=`${data.basics.picture}`)
+        p It me!
+        h4= `You can contact me at ${data.basics.email}!`
+        h5= `Prefer to call me instead? My phone number is ${data.basics.phone}`
