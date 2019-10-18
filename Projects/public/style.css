@@ -10,6 +10,7 @@ body{
 nav.navbar{
     width: 100%;
     text-align: center;
+    clear: both;
 }
 
 nav.navbar li{
