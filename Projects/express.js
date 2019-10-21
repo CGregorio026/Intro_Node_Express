@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 // app runs the express module, allowing it to be used elsewhere in the document without the need to write the function more than once, defining it to a quick variable.
 const app = express();
 // this defines our port; this is where on the localhost that our content will be found.
-const port = 8001;
+const port = 8006;
 
 // info is some basic data that we can use to be called in the pug files. we can pass it through an app.get...res.render to render it in the specific files that we want to call our data through.
 var info = {

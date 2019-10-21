@@ -46,3 +46,9 @@ nav.navbar::after{
     display: table;
     content: "";
 }
+
+div.info{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
